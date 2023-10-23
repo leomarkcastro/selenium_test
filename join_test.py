@@ -67,6 +67,8 @@ def test_routine(i, roomCode):
 def test():
     # create x multi processes of test_routine
     x = instance_count
+    print(
+        f"Spawing {x} instance(s) of test_routine with roomCode: {room_code}")
     processes = []
     for i in range(x):
         processes.append(Process(target=test_routine, args=(i, room_code)))
@@ -78,4 +80,5 @@ def test():
 
 
 if __name__ == "__main__":
+    print("Starting Test")
     test()
