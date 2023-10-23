@@ -1,0 +1,141 @@
+[
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "selenium.webdriver.chrome.options",
+        "description": "selenium.webdriver.chrome.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.chrome.options",
+        "documentation": {}
+    },
+    {
+        "label": "generate_join_link",
+        "importPath": "generate_room",
+        "description": "generate_room",
+        "isExtraImport": true,
+        "detail": "generate_room",
+        "documentation": {}
+    },
+    {
+        "label": "Process",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "ceil",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "generate_join_link",
+        "kind": 2,
+        "importPath": "generate_room",
+        "description": "generate_room",
+        "peekOfCode": "def generate_join_link():\n    url = \"https://dev-landvault-be.int2.lv-aws-x3.xyzapps.xyz/api/users/create-shareable-link-auto\"\n    payload = json.dumps({\n        \"roomName\": \"My personal room\",\n        \"roomCode\": \"DAF231432S\",\n        \"roomType\": \"MeetingRoom\",\n        \"roomEnvironment\": \"Japandi\"\n    })\n    headers = {\n        'Content-Type': 'application/json'",
+        "detail": "generate_room",
+        "documentation": {}
+    },
+    {
+        "label": "test_routine",
+        "kind": 2,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "def test_routine(i):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")\n    # set window positiona\n    x = i % browser_row_size * browser_size[0]\n    y = i // browser_row_size * browser_size[1]",
+        "detail": "join_test",
+        "documentation": {}
+    },
+    {
+        "label": "test",
+        "kind": 2,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "def test():\n    # create x multi processes of test_routine\n    x = instance_count\n    processes = []\n    for i in range(x):\n        processes.append(Process(target=test_routine, args=(i,)))\n        processes[i].start()\n    # wait for all processes to finish\n    for i in range(x):\n        processes[i].join()",
+        "detail": "join_test",
+        "documentation": {}
+    },
+    {
+        "label": "browser_width",
+        "kind": 5,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "browser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 3\ndef test_routine(i):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300",
+        "detail": "join_test",
+        "documentation": {}
+    },
+    {
+        "label": "browser_aspect_ratio",
+        "kind": 5,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "browser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 3\ndef test_routine(i):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(",
+        "detail": "join_test",
+        "documentation": {}
+    },
+    {
+        "label": "browser_size",
+        "kind": 5,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 3\ndef test_routine(i):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")",
+        "detail": "join_test",
+        "documentation": {}
+    },
+    {
+        "label": "browser_row_size",
+        "kind": 5,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "browser_row_size = 3\ninstance_count = 3\ndef test_routine(i):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")\n    # set window positiona",
+        "detail": "join_test",
+        "documentation": {}
+    },
+    {
+        "label": "instance_count",
+        "kind": 5,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "instance_count = 3\ndef test_routine(i):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")\n    # set window positiona\n    x = i % browser_row_size * browser_size[0]",
+        "detail": "join_test",
+        "documentation": {}
+    }
+]
