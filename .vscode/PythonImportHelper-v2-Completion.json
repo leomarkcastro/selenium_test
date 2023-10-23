@@ -18,22 +18,6 @@
         "documentation": {}
     },
     {
-        "label": "roomEnvironment",
-        "importPath": "generate_room",
-        "description": "generate_room",
-        "isExtraImport": true,
-        "detail": "generate_room",
-        "documentation": {}
-    },
-    {
-        "label": "generate_join_link",
-        "importPath": "generate_room",
-        "description": "generate_room",
-        "isExtraImport": true,
-        "detail": "generate_room",
-        "documentation": {}
-    },
-    {
         "label": "webdriver",
         "importPath": "selenium",
         "description": "selenium",
@@ -47,6 +31,14 @@
         "description": "selenium.webdriver.chrome.options",
         "isExtraImport": true,
         "detail": "selenium.webdriver.chrome.options",
+        "documentation": {}
+    },
+    {
+        "label": "generate_join_link",
+        "importPath": "generate_room",
+        "description": "generate_room",
+        "isExtraImport": true,
+        "detail": "generate_room",
         "documentation": {}
     },
     {
@@ -79,25 +71,25 @@
         "kind": 2,
         "importPath": "generate_room",
         "description": "generate_room",
-        "peekOfCode": "def generate_join_link(\n        roomCode=\"DAF231432S\",\n        roomEnvironment=roomEnvironment[\"Japandi\"],\n        roomType=roomType[\"MeetingRoom\"],\n        roomName=\"My personal room\",\n):\n    url = \"https://dev-landvault-be.int2.lv-aws-x3.xyzapps.xyz/api/users/create-shareable-link-auto\"\n    payload = json.dumps({\n        \"roomName\": roomName,\n        \"roomCode\": roomCode,",
+        "peekOfCode": "def generate_join_link(\n        roomCode=\"DAF231432S\",\n        roomEnvironment=roomEnvironmentList[\"Japandi\"],\n        roomType=roomTypeList[\"MeetingRoom\"],\n        roomName=\"My personal room\",\n):\n    url = \"https://dev-landvault-be.int2.lv-aws-x3.xyzapps.xyz/api/users/create-shareable-link-auto\"\n    payload = json.dumps({\n        \"roomName\": roomName,\n        \"roomCode\": roomCode,",
         "detail": "generate_room",
         "documentation": {}
     },
     {
-        "label": "roomType",
+        "label": "roomTypeList",
         "kind": 5,
         "importPath": "generate_room",
         "description": "generate_room",
-        "peekOfCode": "roomType = {\n    \"MeetingRoom\": \"MeetingRoom\",\n    \"BoardRoom\": \"BoardRoom\",\n    # \"Auditorium\": \"Auditorium\",\n}\nroomEnvironment = {\n    \"FuturePop\": \"FuturePop\",\n    \"Japandi\": \"Japandi\",\n    \"Metaverse2033\": \"Metaverse2033\",\n}",
+        "peekOfCode": "roomTypeList = {\n    \"MeetingRoom\": \"MeetingRoom\",\n    \"BoardRoom\": \"BoardRoom\",\n    # \"Auditorium\": \"Auditorium\",\n}\nroomEnvironmentList = {\n    \"FuturePop\": \"FuturePop\",\n    \"Japandi\": \"Japandi\",\n    \"Metaverse2033\": \"Metaverse2033\",\n}",
         "detail": "generate_room",
         "documentation": {}
     },
     {
-        "label": "roomEnvironment",
+        "label": "roomEnvironmentList",
         "kind": 5,
         "importPath": "generate_room",
         "description": "generate_room",
-        "peekOfCode": "roomEnvironment = {\n    \"FuturePop\": \"FuturePop\",\n    \"Japandi\": \"Japandi\",\n    \"Metaverse2033\": \"Metaverse2033\",\n}\ndef generate_join_link(\n        roomCode=\"DAF231432S\",\n        roomEnvironment=roomEnvironment[\"Japandi\"],\n        roomType=roomType[\"MeetingRoom\"],\n        roomName=\"My personal room\",",
+        "peekOfCode": "roomEnvironmentList = {\n    \"FuturePop\": \"FuturePop\",\n    \"Japandi\": \"Japandi\",\n    \"Metaverse2033\": \"Metaverse2033\",\n}\ndef generate_join_link(\n        roomCode=\"DAF231432S\",\n        roomEnvironment=roomEnvironmentList[\"Japandi\"],\n        roomType=roomTypeList[\"MeetingRoom\"],\n        roomName=\"My personal room\",",
         "detail": "generate_room",
         "documentation": {}
     },
@@ -124,7 +116,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 3\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300",
+        "peekOfCode": "browser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300",
         "detail": "join_test",
         "documentation": {}
     },
@@ -133,7 +125,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 3\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(",
+        "peekOfCode": "browser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(",
         "detail": "join_test",
         "documentation": {}
     },
@@ -142,7 +134,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 3\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")",
+        "peekOfCode": "browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")",
         "detail": "join_test",
         "documentation": {}
     },
@@ -151,7 +143,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_row_size = 3\ninstance_count = 3\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")\n    # set window positiona",
+        "peekOfCode": "browser_row_size = 3\ninstance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")\n    # set window positiona",
         "detail": "join_test",
         "documentation": {}
     },
@@ -160,7 +152,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "instance_count = 3\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")\n    # set window positiona\n    x = i % browser_row_size * browser_size[0]",
+        "peekOfCode": "instance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")\n    # set window positiona\n    x = i % browser_row_size * browser_size[0]",
         "detail": "join_test",
         "documentation": {}
     }

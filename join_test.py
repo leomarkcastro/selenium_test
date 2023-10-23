@@ -9,7 +9,7 @@ browser_width = 400
 browser_aspect_ratio = 3/4  # 4:3
 browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))
 browser_row_size = 3
-instance_count = 3
+instance_count = 300
 
 
 def test_routine(i, roomCode):

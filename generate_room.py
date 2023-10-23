@@ -1,15 +1,14 @@
 import requests
 import json
-from generate_room import roomEnvironment
 
 # create an enum of roomType, roomEnvironment
-roomType = {
+roomTypeList = {
     "MeetingRoom": "MeetingRoom",
     "BoardRoom": "BoardRoom",
     # "Auditorium": "Auditorium",
 }
 
-roomEnvironment = {
+roomEnvironmentList = {
     "FuturePop": "FuturePop",
     "Japandi": "Japandi",
     "Metaverse2033": "Metaverse2033",
@@ -18,8 +17,8 @@ roomEnvironment = {
 
 def generate_join_link(
         roomCode="DAF231432S",
-        roomEnvironment=roomEnvironment["Japandi"],
-        roomType=roomType["MeetingRoom"],
+        roomEnvironment=roomEnvironmentList["Japandi"],
+        roomType=roomTypeList["MeetingRoom"],
         roomName="My personal room",
 ):
     url = "https://dev-landvault-be.int2.lv-aws-x3.xyzapps.xyz/api/users/create-shareable-link-auto"
