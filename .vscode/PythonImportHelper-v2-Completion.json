@@ -67,6 +67,14 @@
         "documentation": {}
     },
     {
+        "label": "Display",
+        "importPath": "pyvirtualdisplay",
+        "description": "pyvirtualdisplay",
+        "isExtraImport": true,
+        "detail": "pyvirtualdisplay",
+        "documentation": {}
+    },
+    {
         "label": "generate_join_link",
         "kind": 2,
         "importPath": "generate_room",
@@ -107,7 +115,7 @@
         "kind": 2,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "def test():\n    # create x multi processes of test_routine\n    roomCode = \"test123\"\n    x = instance_count\n    processes = []\n    for i in range(x):\n        processes.append(Process(target=test_routine, args=(i, roomCode)))\n        processes[i].start()\n    # wait for all processes to finish\n    for i in range(x):",
+        "peekOfCode": "def test():\n    # create x multi processes of test_routine\n    x = instance_count\n    processes = []\n    for i in range(x):\n        processes.append(Process(target=test_routine, args=(i, room_code)))\n        processes[i].start()\n    # wait for all processes to finish\n    for i in range(x):\n        processes[i].join()",
         "detail": "join_test",
         "documentation": {}
     },
@@ -116,7 +124,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300",
+        "peekOfCode": "browser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:",
         "detail": "join_test",
         "documentation": {}
     },
@@ -125,7 +133,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(",
+        "peekOfCode": "browser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    # set xvfb display since there is no GUI in docker container.",
         "detail": "join_test",
         "documentation": {}
     },
@@ -134,7 +142,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")",
+        "peekOfCode": "browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)",
         "detail": "join_test",
         "documentation": {}
     },
@@ -143,7 +151,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_row_size = 3\ninstance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")\n    # set window positiona",
+        "peekOfCode": "browser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()",
         "detail": "join_test",
         "documentation": {}
     },
@@ -152,7 +160,25 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "instance_count = 300\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")\n    chrome_options = Options()\n    chrome_options.add_experimental_option(\"detach\", True)\n    # set window size to 400 x 300\n    chrome_options.add_argument(\n        f\"window-size={browser_size[0]},{browser_size[1]}\")\n    # set window positiona\n    x = i % browser_row_size * browser_size[0]",
+        "peekOfCode": "instance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine",
+        "detail": "join_test",
+        "documentation": {}
+    },
+    {
+        "label": "room_code",
+        "kind": 5,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "room_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine\ndef test_routine(i, roomCode):",
+        "detail": "join_test",
+        "documentation": {}
+    },
+    {
+        "label": "use_virtual_display",
+        "kind": 5,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "use_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine\ndef test_routine(i, roomCode):\n    print(f\"[{i}] Testing...\")",
         "detail": "join_test",
         "documentation": {}
     }
