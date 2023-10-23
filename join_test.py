@@ -1,10 +1,12 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from generate_room import generate_join_link
 from multiprocessing import Process
 import os
 from math import ceil
-from pyvirtualdisplay import Display
+from time import sleep
+from random import randint, shuffle
 
 # get environment variables
 
@@ -20,17 +22,25 @@ use_virtual_display = os.environ.get(
 # start virtual display
 
 if use_virtual_display:
+    print("Starting virtual display")
     # set xvfb display since there is no GUI in docker container.
-    display = Display(visible=0, size=browser_size)
-    display.start()
+    # display = Display(visible=0, size=browser_size)
+    # display.start()
 
 # declare test routine
+
+
+def hold_key(driver, key, duration, sleep_duration):
+    for i in range(duration):
+        driver.find_element(By.TAG_NAME, "body").send_keys(key)
+        sleep(0.1)
+    sleep(sleep_duration)
 
 
 def test_routine(i, roomCode):
     print(f"[{i}] Testing...")
     chrome_options = Options()
-    chrome_options.add_experimental_option("detach", True)
+    # chrome_options.add_experimental_option("detach", True)
 
     # set window size to 400 x 300
     chrome_options.add_argument(
@@ -41,6 +51,7 @@ def test_routine(i, roomCode):
     y = i // browser_row_size * browser_size[1]
     chrome_options.add_argument(f"window-position={x},{y}")
 
+    # chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
 
@@ -61,7 +72,12 @@ def test_routine(i, roomCode):
 
     # remain running until user closes the browser
     while True:
-        pass
+        # simulate key hold to body
+        # keys = ["w", "a", "s", "d"]
+        # shuffle(keys)
+        # for i in keys:
+        #     hold_key(driver, i, randint(1000, 5000), randint(1, 2))
+        sleep(30)
 
 
 def test():
@@ -72,11 +88,14 @@ def test():
     processes = []
     for i in range(x):
         processes.append(Process(target=test_routine, args=(i, room_code)))
+        print(f"Spawning process {i}")
         processes[i].start()
+        print(f"Process {i} started")
 
     # wait for all processes to finish
     for i in range(x):
         processes[i].join()
+        print(f"Process {i} ended")
 
 
 if __name__ == "__main__":
