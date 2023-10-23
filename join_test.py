@@ -12,7 +12,7 @@ browser_row_size = 3
 instance_count = 3
 
 
-def test_routine(i):
+def test_routine(i, roomCode):
     print(f"[{i}] Testing...")
     chrome_options = Options()
     chrome_options.add_experimental_option("detach", True)
@@ -38,16 +38,17 @@ def test_routine(i):
 
     driver = webdriver.Chrome(options=chrome_options)
 
-    join_url = generate_join_link()
+    join_url = generate_join_link(roomCode)
     driver.get(join_url)
 
 
 def test():
     # create x multi processes of test_routine
+    roomCode = "test123"
     x = instance_count
     processes = []
     for i in range(x):
-        processes.append(Process(target=test_routine, args=(i,)))
+        processes.append(Process(target=test_routine, args=(i, roomCode)))
         processes[i].start()
 
     # wait for all processes to finish
