@@ -83,19 +83,19 @@
         "documentation": {}
     },
     {
-        "label": "randint",
-        "importPath": "random",
-        "description": "random",
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
         "isExtraImport": true,
-        "detail": "random",
+        "detail": "time",
         "documentation": {}
     },
     {
-        "label": "shuffle",
-        "importPath": "random",
-        "description": "random",
+        "label": "Display",
+        "importPath": "pyvirtualdisplay",
+        "description": "pyvirtualdisplay",
         "isExtraImport": true,
-        "detail": "random",
+        "detail": "pyvirtualdisplay",
         "documentation": {}
     },
     {
@@ -148,7 +148,7 @@
         "kind": 2,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "def test():\n    # create x multi processes of test_routine\n    x = instance_count\n    print(\n        f\"Spawing {x} instance(s) of test_routine with roomCode: {room_code}\")\n    processes = []\n    for i in range(x):\n        processes.append(Process(target=test_routine, args=(i, room_code)))\n        print(f\"Spawning process {i}\")\n        processes[i].start()",
+        "peekOfCode": "def test():\n    print(\"Starting test...\")\n    # test_routine(0, room_code)\n    # create x multi processes of test_routine\n    x = instance_count\n    print(\n        f\"Spawing {x} instance(s) of test_routine with roomCode: {room_code}\")\n    processes = []\n    for i in range(x):\n        processes.append(Process(target=test_routine, args=(i, room_code)))",
         "detail": "join_test",
         "documentation": {}
     },
@@ -184,7 +184,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    # display = Display(visible=0, size=browser_size)",
+        "peekOfCode": "browser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)",
         "detail": "join_test",
         "documentation": {}
     },
@@ -193,7 +193,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "instance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    # display = Display(visible=0, size=browser_size)\n    # display.start()",
+        "peekOfCode": "instance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()",
         "detail": "join_test",
         "documentation": {}
     },
@@ -202,7 +202,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "room_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    # display = Display(visible=0, size=browser_size)\n    # display.start()\n# declare test routine",
+        "peekOfCode": "room_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine",
         "detail": "join_test",
         "documentation": {}
     },
@@ -211,7 +211,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "use_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    # display = Display(visible=0, size=browser_size)\n    # display.start()\n# declare test routine\ndef hold_key(driver, key, duration, sleep_duration):",
+        "peekOfCode": "use_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine\ndef hold_key(driver, key, duration, sleep_duration):",
         "detail": "join_test",
         "documentation": {}
     }

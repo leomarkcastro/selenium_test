@@ -6,7 +6,7 @@ from multiprocessing import Process
 import os
 from math import ceil
 from time import sleep
-from random import randint, shuffle
+from pyvirtualdisplay import Display
 
 # get environment variables
 
@@ -24,8 +24,8 @@ use_virtual_display = os.environ.get(
 if use_virtual_display:
     print("Starting virtual display")
     # set xvfb display since there is no GUI in docker container.
-    # display = Display(visible=0, size=browser_size)
-    # display.start()
+    display = Display(visible=0, size=browser_size)
+    display.start()
 
 # declare test routine
 
@@ -51,7 +51,8 @@ def test_routine(i, roomCode):
     y = i // browser_row_size * browser_size[1]
     chrome_options.add_argument(f"window-position={x},{y}")
 
-    # chrome_options.add_argument('--headless')
+    if use_virtual_display:
+        chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
 
@@ -65,9 +66,13 @@ def test_routine(i, roomCode):
         os.mkdir(userDataDir)
     chrome_options.add_argument(f"user-data-dir={userDataDir}")
 
+    print(f"[{i}] Starting Chrome...")
     driver = webdriver.Chrome(options=chrome_options)
 
+    print(f"[{i}] Create room link...")
     join_url = generate_join_link(roomCode)
+
+    print(f"[{i}] Joining room...")
     driver.get(join_url)
 
     # remain running until user closes the browser
@@ -81,6 +86,8 @@ def test_routine(i, roomCode):
 
 
 def test():
+    print("Starting test...")
+    # test_routine(0, room_code)
     # create x multi processes of test_routine
     x = instance_count
     print(

@@ -21,7 +21,8 @@ RUN apt-get install -yqq unzip
 RUN wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/118.0.5993.70/linux64/chromedriver-linux64.zip
 RUN unzip /tmp/chromedriver.zip "chromedriver-linux64/*" -d /usr/local/bin/chromedriver
 
-RUN apt-get install -y xvfb
+RUN apt-get install -y parallel
+RUN apt-get install -y xvfb 
 
 # Copy the current directory contents into the container at /app
 COPY requirements.txt ./requirements.txt
@@ -34,6 +35,7 @@ COPY . .
 
 # set display port to avoid crash
 ENV DISPLAY=:99
+ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 # Run app.py when the container launches
 CMD ["python", "join_test.py"]
