@@ -191,7 +191,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:",
+        "peekOfCode": "browser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\nuse_gpu = get_env(\n    \"USE_GPU\", \"false\").lower() == \"true\"",
         "detail": "join_test",
         "documentation": {}
     },
@@ -200,7 +200,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")",
+        "peekOfCode": "browser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\nuse_gpu = get_env(\n    \"USE_GPU\", \"false\").lower() == \"true\"\n# start virtual display",
         "detail": "join_test",
         "documentation": {}
     },
@@ -209,7 +209,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.",
+        "peekOfCode": "browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\nuse_gpu = get_env(\n    \"USE_GPU\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:",
         "detail": "join_test",
         "documentation": {}
     },
@@ -218,7 +218,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)",
+        "peekOfCode": "browser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\nuse_gpu = get_env(\n    \"USE_GPU\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")",
         "detail": "join_test",
         "documentation": {}
     },
@@ -227,7 +227,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "instance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()",
+        "peekOfCode": "instance_count = int(get_env(\"INSTANCE_COUNT\", 1))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\nuse_gpu = get_env(\n    \"USE_GPU\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.",
         "detail": "join_test",
         "documentation": {}
     },
@@ -236,7 +236,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "room_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine",
+        "peekOfCode": "room_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\nuse_gpu = get_env(\n    \"USE_GPU\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)",
         "detail": "join_test",
         "documentation": {}
     },
@@ -245,7 +245,16 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "use_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine\ndef hold_key(driver, key, duration, sleep_duration):",
+        "peekOfCode": "use_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\nuse_gpu = get_env(\n    \"USE_GPU\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()",
+        "detail": "join_test",
+        "documentation": {}
+    },
+    {
+        "label": "use_gpu",
+        "kind": 5,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "use_gpu = get_env(\n    \"USE_GPU\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine\ndef hold_key(driver, key, duration, sleep_duration):",
         "detail": "join_test",
         "documentation": {}
     }

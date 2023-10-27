@@ -23,6 +23,8 @@ instance_count = int(get_env("INSTANCE_COUNT", 1))
 room_code = get_env("ROOM_CODE", "test123")
 use_virtual_display = get_env(
     "USE_VIRTUAL_DISPLAY", "false").lower() == "true"
+use_gpu = get_env(
+    "USE_GPU", "false").lower() == "true"
 
 # start virtual display
 
@@ -61,8 +63,9 @@ def test_routine(i, roomCode):
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
     # q: 4GB in MB
-    # a: 4096
-    chrome_options.add_argument('--disable-gpu')
+    # a: 40961
+    if (use_gpu):
+        chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--js-flags="--max_old_space_size=8192"')
 
     # get current project directory
