@@ -1,5 +1,11 @@
 import requests
 import json
+import os
+
+
+def get_env(key, default):
+    return os.environ.get(key, default)
+
 
 # create an enum of roomType, roomEnvironment
 roomTypeList = {
@@ -21,7 +27,7 @@ def generate_join_link(
         roomType=roomTypeList["MeetingRoom"],
         roomName="My personal room",
 ):
-    url = "https://dev-landvault-be.int2.lv-aws-x3.xyzapps.xyz/api/users/create-shareable-link-auto"
+    url = get_env("ROOM_GENERATOR_URL", "http://localhost:8080/room")
 
     payload = json.dumps({
         "roomName": roomName,

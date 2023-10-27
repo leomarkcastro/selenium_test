@@ -18,6 +18,15 @@
         "documentation": {}
     },
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
         "label": "webdriver",
         "importPath": "selenium",
         "description": "selenium",
@@ -50,20 +59,27 @@
         "documentation": {}
     },
     {
+        "label": "roomEnvironmentList",
+        "importPath": "generate_room",
+        "description": "generate_room",
+        "isExtraImport": true,
+        "detail": "generate_room",
+        "documentation": {}
+    },
+    {
+        "label": "roomTypeList",
+        "importPath": "generate_room",
+        "description": "generate_room",
+        "isExtraImport": true,
+        "detail": "generate_room",
+        "documentation": {}
+    },
+    {
         "label": "Process",
         "importPath": "multiprocessing",
         "description": "multiprocessing",
         "isExtraImport": true,
         "detail": "multiprocessing",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
         "documentation": {}
     },
     {
@@ -99,11 +115,20 @@
         "documentation": {}
     },
     {
+        "label": "get_env",
+        "kind": 2,
+        "importPath": "generate_room",
+        "description": "generate_room",
+        "peekOfCode": "def get_env(key, default):\n    return os.environ.get(key, default)\n# create an enum of roomType, roomEnvironment\nroomTypeList = {\n    \"MeetingRoom\": \"MeetingRoom\",\n    \"BoardRoom\": \"BoardRoom\",\n    # \"Auditorium\": \"Auditorium\",\n}\nroomEnvironmentList = {\n    \"FuturePop\": \"FuturePop\",",
+        "detail": "generate_room",
+        "documentation": {}
+    },
+    {
         "label": "generate_join_link",
         "kind": 2,
         "importPath": "generate_room",
         "description": "generate_room",
-        "peekOfCode": "def generate_join_link(\n        roomCode=\"DAF231432S\",\n        roomEnvironment=roomEnvironmentList[\"Japandi\"],\n        roomType=roomTypeList[\"MeetingRoom\"],\n        roomName=\"My personal room\",\n):\n    url = \"https://dev-landvault-be.int2.lv-aws-x3.xyzapps.xyz/api/users/create-shareable-link-auto\"\n    payload = json.dumps({\n        \"roomName\": roomName,\n        \"roomCode\": roomCode,",
+        "peekOfCode": "def generate_join_link(\n        roomCode=\"DAF231432S\",\n        roomEnvironment=roomEnvironmentList[\"Japandi\"],\n        roomType=roomTypeList[\"MeetingRoom\"],\n        roomName=\"My personal room\",\n):\n    url = get_env(\"ROOM_GENERATOR_URL\", \"http://localhost:8080/room\")\n    payload = json.dumps({\n        \"roomName\": roomName,\n        \"roomCode\": roomCode,",
         "detail": "generate_room",
         "documentation": {}
     },
@@ -123,6 +148,15 @@
         "description": "generate_room",
         "peekOfCode": "roomEnvironmentList = {\n    \"FuturePop\": \"FuturePop\",\n    \"Japandi\": \"Japandi\",\n    \"Metaverse2033\": \"Metaverse2033\",\n}\ndef generate_join_link(\n        roomCode=\"DAF231432S\",\n        roomEnvironment=roomEnvironmentList[\"Japandi\"],\n        roomType=roomTypeList[\"MeetingRoom\"],\n        roomName=\"My personal room\",",
         "detail": "generate_room",
+        "documentation": {}
+    },
+    {
+        "label": "get_env",
+        "kind": 2,
+        "importPath": "join_test",
+        "description": "join_test",
+        "peekOfCode": "def get_env(key, default):\n    return os.environ.get(key, default)\n# get environment variables\nbrowser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 3))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(",
+        "detail": "join_test",
         "documentation": {}
     },
     {
@@ -157,7 +191,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:",
+        "peekOfCode": "browser_width = 400\nbrowser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 3))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:",
         "detail": "join_test",
         "documentation": {}
     },
@@ -166,7 +200,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")",
+        "peekOfCode": "browser_aspect_ratio = 3/4  # 4:3\nbrowser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 3))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")",
         "detail": "join_test",
         "documentation": {}
     },
@@ -175,7 +209,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.",
+        "peekOfCode": "browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))\nbrowser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 3))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.",
         "detail": "join_test",
         "documentation": {}
     },
@@ -184,7 +218,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "browser_row_size = 3\ninstance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)",
+        "peekOfCode": "browser_row_size = 3\ninstance_count = int(get_env(\"INSTANCE_COUNT\", 3))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)",
         "detail": "join_test",
         "documentation": {}
     },
@@ -193,7 +227,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "instance_count = int(os.environ.get(\"INSTANCE_COUNT\", 3))\nroom_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()",
+        "peekOfCode": "instance_count = int(get_env(\"INSTANCE_COUNT\", 3))\nroom_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()",
         "detail": "join_test",
         "documentation": {}
     },
@@ -202,7 +236,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "room_code = os.environ.get(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine",
+        "peekOfCode": "room_code = get_env(\"ROOM_CODE\", \"test123\")\nuse_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine",
         "detail": "join_test",
         "documentation": {}
     },
@@ -211,7 +245,7 @@
         "kind": 5,
         "importPath": "join_test",
         "description": "join_test",
-        "peekOfCode": "use_virtual_display = os.environ.get(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine\ndef hold_key(driver, key, duration, sleep_duration):",
+        "peekOfCode": "use_virtual_display = get_env(\n    \"USE_VIRTUAL_DISPLAY\", \"false\").lower() == \"true\"\n# start virtual display\nif use_virtual_display:\n    print(\"Starting virtual display\")\n    # set xvfb display since there is no GUI in docker container.\n    display = Display(visible=0, size=browser_size)\n    display.start()\n# declare test routine\ndef hold_key(driver, key, duration, sleep_duration):",
         "detail": "join_test",
         "documentation": {}
     }

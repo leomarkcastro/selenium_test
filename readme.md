@@ -15,4 +15,4 @@ docker build -t sel_test .
 
 ## Run Command
 
-docker run -it -d --env-file .env sel_test
+docker run -it --env-file .env sel_test

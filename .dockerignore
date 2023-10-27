@@ -1,6 +1,5 @@
 venv
 *.pyc
-chrome-*/*
 selenium/*
 .vscode
 chromedriver.exe

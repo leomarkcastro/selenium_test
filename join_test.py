@@ -1,22 +1,27 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from generate_room import generate_join_link
+from generate_room import generate_join_link, roomEnvironmentList, roomTypeList
 from multiprocessing import Process
 import os
 from math import ceil
 from time import sleep
 from pyvirtualdisplay import Display
 
+
+def get_env(key, default):
+    return os.environ.get(key, default)
+
 # get environment variables
+
 
 browser_width = 400
 browser_aspect_ratio = 3/4  # 4:3
 browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))
 browser_row_size = 3
-instance_count = int(os.environ.get("INSTANCE_COUNT", 3))
-room_code = os.environ.get("ROOM_CODE", "test123")
-use_virtual_display = os.environ.get(
+instance_count = int(get_env("INSTANCE_COUNT", 3))
+room_code = get_env("ROOM_CODE", "test123")
+use_virtual_display = get_env(
     "USE_VIRTUAL_DISPLAY", "false").lower() == "true"
 
 # start virtual display
@@ -55,6 +60,10 @@ def test_routine(i, roomCode):
         chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
+    # q: 4GB in MB
+    # a: 4096
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--js-flags="--max_old_space_size=8192"')
 
     # get current project directory
     project_dir = os.getcwd()
@@ -65,16 +74,28 @@ def test_routine(i, roomCode):
     if not os.path.exists(userDataDir):
         os.mkdir(userDataDir)
     chrome_options.add_argument(f"user-data-dir={userDataDir}")
+    # enlarge memory
+
+    chrome_options.set_capability("goog:loggingPrefs", {  # old: loggingPrefs
+        "browser": "ALL"})
+
+    chrome_options.page_load_strategy = 'none'
 
     print(f"[{i}] Starting Chrome...")
     driver = webdriver.Chrome(options=chrome_options)
 
     print(f"[{i}] Create room link...")
-    join_url = generate_join_link(roomCode)
+    join_url = generate_join_link(
+        roomCode,
+        get_env("ROOM_ENVIRONMENT", roomEnvironmentList["Japandi"]),
+        get_env("ROOM_TYPE", roomTypeList["MeetingRoom"])
+    )
 
-    print(f"[{i}] Joining room...")
+    print(f"[{i}] Joining room (no-wait)...")
     driver.get(join_url)
 
+    print(f"[{i}] Waiting for page to load...")
+    total_logs = 0
     # remain running until user closes the browser
     while True:
         # simulate key hold to body
@@ -82,7 +103,14 @@ def test_routine(i, roomCode):
         # shuffle(keys)
         # for i in keys:
         #     hold_key(driver, i, randint(1000, 5000), randint(1, 2))
-        sleep(30)
+
+        logs = driver.get_log("browser")
+        if (len(logs) > 0):
+            for log in logs:
+                total_logs += 1
+                print(f"[{i}] >> {total_logs} - {log['level']} - {log['message']}")
+
+        sleep(5)
 
 
 def test():
