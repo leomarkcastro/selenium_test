@@ -3,3 +3,4 @@ venv
 selenium/*
 .vscode
 chromedriver.exe
+.env

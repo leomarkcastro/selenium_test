@@ -19,7 +19,7 @@ browser_width = 400
 browser_aspect_ratio = 3/4  # 4:3
 browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))
 browser_row_size = 3
-instance_count = int(get_env("INSTANCE_COUNT", 3))
+instance_count = int(get_env("INSTANCE_COUNT", 1))
 room_code = get_env("ROOM_CODE", "test123")
 use_virtual_display = get_env(
     "USE_VIRTUAL_DISPLAY", "false").lower() == "true"
