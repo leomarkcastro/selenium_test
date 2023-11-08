@@ -8,6 +8,11 @@ from math import ceil
 from time import sleep
 from pyvirtualdisplay import Display
 
+# load env variables from .env file
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 def get_env(key, default):
     return os.environ.get(key, default)
@@ -19,7 +24,7 @@ browser_width = 400
 browser_aspect_ratio = 3/4  # 4:3
 browser_size = (ceil(browser_width), ceil(browser_width*browser_aspect_ratio))
 browser_row_size = 3
-instance_count = int(get_env("INSTANCE_COUNT", 1))
+instance_count = int(get_env("INSTANCE_COUNT", 3))
 room_code = get_env("ROOM_CODE", "test123")
 use_virtual_display = get_env(
     "USE_VIRTUAL_DISPLAY", "false").lower() == "true"
@@ -64,7 +69,7 @@ def test_routine(i, roomCode):
     chrome_options.add_argument('--disable-dev-shm-usage')
     # q: 4GB in MB
     # a: 40961
-    if (use_gpu):
+    if (not use_gpu):
         chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--js-flags="--max_old_space_size=8192"')
 
